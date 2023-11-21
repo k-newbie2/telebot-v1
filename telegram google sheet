@@ -1,0 +1,16 @@
+import gspread
+from telegram import Bot
+
+# Connect to Google Sheets
+gc = gspread.service_account()
+worksheet = gc.open("Your Spreadsheet").sheet1
+
+# Get stock data (replace this with your logic)
+stock_data = worksheet.get_all_values()
+
+# Set up your Telegram bot
+telegram_token = "YOUR_TELEGRAM_BOT_TOKEN"
+bot = Bot(token=telegram_token)
+
+# Send a message to your Telegram bot
+bot.send_message(chat_id="YOUR_CHAT_ID", text=str(stock_data))
